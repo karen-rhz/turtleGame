@@ -38,11 +38,11 @@ screen.listen()
 
 
 def turtle_commands():
-    screen.onkey(move_forward, "w")
-    screen.onkey(move_backwards, "s")
-    screen.onkey(turn_left, "a")
-    screen.onkey(turn_right, "d")
-    screen.onkey(end, "c")
+    screen.onkey(move_forward, "Up")
+    screen.onkey(move_backwards, "Down")
+    screen.onkey(turn_left, "Left")
+    screen.onkey(turn_right, "Right")
+    screen.onkey(end, "x")
 
 
 turtle_commands()

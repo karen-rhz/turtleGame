@@ -2,13 +2,21 @@ import turtle
 from turtle import Turtle, Screen
 import random
 
+# Fixing the screen to make it easier on the eyes
+screen = Screen()
+screen.bgcolor("black")
+
+# Add title to window
+screen.title("Turtle Racing Game")
 
 is_game_running = False
 
 # Using a list for loop is much efficient
 # Loop for colours
-colors = ["lime green", "royal blue", "crimson", "gold", "dark orchid",
-          "dark orange", "sienna", "hot pink", "dark blue", "rosy brown"]
+colors = ["green", "blue", "orange", "yellow", "purple",
+          "red", "pink", "brown"]
+
+# Coordinates for the other contestants
 # Loop for the y position bc they all start at the same x
 y_position = [-200, -150, -100, -50, 0, 50, 100, 150, 200]
 # blue_turtle.goto(-300, -150)
@@ -19,10 +27,11 @@ y_position = [-200, -150, -100, -50, 0, 50, 100, 150, 200]
 all_turtle_racers = []
 
 screen = Screen()
-screen.screensize(canvwidth=50, canvheight=300)
+screen.screensize(canvwidth=300, canvheight=300)
 
+# Asking the user for their bet
 user_choice = turtle.textinput(title="Pick your winner",
-                               prompt="Choose your turtle color: green / blue / red / yellow / purple / orange \n ")
+                               prompt="Choose your turtle color: green, blue, orange, yellow, purple, red, pink, brown")
 
 # Each turtle must be configured as such
 # green_turtle = Turtle("turtle")
@@ -30,21 +39,13 @@ user_choice = turtle.textinput(title="Pick your winner",
 # green_turtle.color("lime green")
 # green_turtle.goto(x=-300, y=-200)
 
-# Coordinated for the other contestants
-# blue_turtle.goto(-300, -150)
-# red_turtle.goto(-300, -100)
-# yellow_turtle.goto(-300, -50)
-# purple_turtle.goto(-300, 0)
-# orange_turtle.goto(-300, 50)
-
-for n in range(9):
+for n in range(8):
     turtle_racer = Turtle(shape="turtle")
     turtle_racer.penup()
     turtle_racer.color(colors[n])
-    turtle_racer.goto(x=-300, y=y_position[n])
+    turtle_racer.goto(x=-350, y=y_position[n])
     # Adding each turtle to the race
     all_turtle_racers.append(turtle_racer)
-
 
 # So that the race doesn't start before the user has made a bet
 if user_choice:
@@ -55,7 +56,7 @@ while is_game_running:
         # We will be letting the turtle go forward bits by bits randomly
         distance = random.randint(0, 10)
         turtle_in_race.forward(distance)
-        if turtle_in_race.xcor() == 30:
+        if turtle_in_race.xcor() > 330:
             turtle_winner = turtle_in_race.pencolor()
             print(f"The winner is the {turtle_winner} turtle.")
             if user_choice == turtle_winner:
@@ -63,10 +64,5 @@ while is_game_running:
             else:
                 print("Your turtle lost the race.")
             is_game_running = False
-
-
-
-
-
 
 screen.exitonclick()
