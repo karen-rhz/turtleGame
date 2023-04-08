@@ -33,11 +33,22 @@ screen.screensize(canvwidth=300, canvheight=300)
 user_choice = turtle.textinput(title="Pick your winner",
                                prompt="Choose your turtle color: green, blue, orange, yellow, purple, red, pink, brown")
 
+
 # Each turtle must be configured as such
 # green_turtle = Turtle("turtle")
 # green_turtle.penup()
 # green_turtle.color("lime green")
 # green_turtle.goto(x=-300, y=-200)
+
+# Add a winner declaration text instead of displaying message on the console
+def screen_message(message, text_y_cor):
+    text = Turtle()
+    text.hideturtle()
+    text.color("white")
+    text.penup()
+    text.goto(0, text_y_cor)
+    text.write(arg=message, align="center", font=('Arial', 15, 'bold'))
+
 
 for n in range(8):
     turtle_racer = Turtle(shape="turtle")
@@ -58,11 +69,12 @@ while is_game_running:
         turtle_in_race.forward(distance)
         if turtle_in_race.xcor() > 330:
             turtle_winner = turtle_in_race.pencolor()
-            print(f"The winner is the {turtle_winner} turtle.")
+            winner_message = f"The winner is the {turtle_winner} turtle."
+            screen_message(winner_message, 280)
             if user_choice == turtle_winner:
-                print("You won!")
+                screen_message("You won!", 250)
             else:
-                print("Your turtle lost the race.")
+                screen_message("Your turtle lost the race.", 250)
             is_game_running = False
 
 screen.exitonclick()
