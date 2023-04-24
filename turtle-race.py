@@ -72,7 +72,7 @@ while is_game_running:
             winner_message = f"The winner is the {turtle_winner} turtle."
             screen_message(winner_message, 280)
             if user_choice == turtle_winner:
-                screen_message("You won!", 250)
+                screen_message("Congratulations! Your turtle won 🎉", 250)
             else:
                 screen_message("Your turtle lost the race.", 250)
             is_game_running = False
